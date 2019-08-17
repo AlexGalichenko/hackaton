@@ -1,3 +1,4 @@
 module.exports = {
-    GLOBAL_TIMEOUT: 30000
+    GLOBAL_TIMEOUT: 30000,
+    VISIBILITY_TIMEOUT: 10000
 }
