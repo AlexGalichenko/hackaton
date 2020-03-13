@@ -1,9 +1,10 @@
 const fsextra = require("fs-extra");
 const yargs = require("yargs");
 const compile = require("@cucumber-e2e/gherkin-parallel");
+const reporter = require("vue-cucumber-html-reporter");
 const State = require("@cucumber-e2e/po").State;
 const PageMap = require("../po/PageMap");
-
+const package = require("../package");
 const argv = yargs
     .option("tags", {
         describe: "tags to run"
@@ -74,6 +75,31 @@ exports.config = {
         // Memory.setComputedInstance(new ComputedMap());
     },
 
-    afterLaunch: async () => {}
+    afterLaunch: async () => {
+        reporter.generate({
+            jsonDir: './reports/',
+            reportPath: './reports/',
+            metadata:{
+                browser: {
+                    name: 'chrome',
+                    version: '80'
+                },
+                device: 'Demo',
+                platform: {
+                    name: 'windows',
+                    version: '10'
+                }
+            },
+            customData: {
+                title: 'Packages',
+                data: [
+                    {label: '@cucumber-e2e/gherkin-parallel', value: package.dependencies["@cucumber-e2e/gherkin-parallel"]},
+                    {label: '@cucumber-e2e/memory', value: package.dependencies["@cucumber-e2e/memory"]},
+                    {label: '@cucumber-e2e/po', value: package.dependencies["@cucumber-e2e/po"]},
+                    {label: 'vue-cucumber-html-reporter', value: package.dependencies["vue-cucumber-html-reporter"]},
+                ]
+            }
+        });
+    }
 
 };
