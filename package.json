@@ -19,14 +19,14 @@
   "homepage": "https://github.com/AlexGalichenko/cucumber-e2e-demo#readme",
   "dependencies": {
     "@cucumber-e2e/gherkin-parallel": "^0.3.2",
-    "@cucumber-e2e/memory": "^0.2.2",
+    "@cucumber-e2e/memory": "^0.3.0",
     "@cucumber-e2e/po": "^0.9.2",
     "chai": "^4.2.0",
     "cucumber": "^5.1.0",
     "fs-extra": "^8.1.0",
     "protractor": "^5.4.3",
     "protractor-cucumber-framework": "^6.2.1",
-    "vue-cucumber-html-reporter": "^0.1.1",
+    "vue-cucumber-html-reporter": "^0.2.0",
     "webdriver-manager-replacement": "^2.0.2",
     "yargs": "^13.3.0"
   }
