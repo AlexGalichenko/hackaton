@@ -4,7 +4,7 @@
   "description": "demo project for cucumber-e2e package",
   "main": " ",
   "scripts": {
-    "wd:update": "webdriver-manager-replacement update --versions.chrome=80.0.3987.0 --gecko=false",
+    "wd:update": "webdriver-manager-replacement update --versions.chrome=85.0.4183.87 --gecko=false",
     "test": "protractor config/protractor.conf.js"
   },
   "repository": {
