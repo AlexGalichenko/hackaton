@@ -15,7 +15,7 @@ When(/^User opens "(.+)"$/, async function(url) {
 
 When(/^User types "(.+)" to "(.+)"$/, async function(value, alias) {
     const page = State.getPage();
-    const parsedValue = Memory.parseValue(value);
+    const parsedValue = Memory.getValue(value);
     const element = page.getElement(alias);
     await browser.wait(
         ecHelper(element, ECOptions.VISIBLE),
