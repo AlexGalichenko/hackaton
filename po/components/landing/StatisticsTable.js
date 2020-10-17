@@ -11,7 +11,6 @@ class StatisticsTable extends BaseComponent {
 
         this.defineComponent({alias: "Rows", component: new Rows()});
     }
-
 }
 
 class Rows extends BaseComponent {
