@@ -1,11 +1,11 @@
 const {Given, When, Then} = require("cucumber");
 const State = require("@cucumber-e2e/po").State;
-const { expect } = require("chai");
+const {expect} = require("chai");
 const ConfigConstants = require("./helpers/ConfigConstants");
-const { Memory } = require("@cucumber-e2e/memory");
-const { browser } = require("protractor");
-const { ecHelper } = require("./helpers/ecHelper");
-const { ECOptions } = require("./helpers/ecHelper");
+const {Memory} = require("@cucumber-e2e/memory");
+const {browser} = require("protractor");
+const {ecHelper} = require("./helpers/ecHelper");
+const {ECOptions} = require("./helpers/ecHelper");
 
 When(/^User should be on "(.+)" page$/, async function(pageName) {
     State.setPage(pageName);

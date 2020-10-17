@@ -1,10 +1,10 @@
 const {Given, When, Then, setDefaultTimeout} = require("cucumber");
-const { State } = require("@cucumber-e2e/po");
-const { Memory } = require("@cucumber-e2e/memory");
+const {State} = require("@cucumber-e2e/po");
+const {Memory} = require("@cucumber-e2e/memory");
 const ConfigConstants = require("./helpers/ConfigConstants");
-const { ecHelper } = require("./helpers/ecHelper");
-const { ECOptions } = require("./helpers/ecHelper");
-const { browser } = require("protractor");
+const {ecHelper} = require("./helpers/ecHelper");
+const {ECOptions} = require("./helpers/ecHelper");
+const {browser} = require("protractor");
 
 setDefaultTimeout(ConfigConstants.GLOBAL_TIMEOUT);
 

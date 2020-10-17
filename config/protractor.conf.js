@@ -2,8 +2,8 @@ const fs = require("fs-extra");
 const yargs = require("yargs");
 const compile = require("@cucumber-e2e/gherkin-parallel");
 const reporter = require("vue-cucumber-html-reporter");
-const { State } = require("@cucumber-e2e/po");
-const { Memory } = require("@cucumber-e2e/memory");
+const {State} = require("@cucumber-e2e/po");
+const {Memory} = require("@cucumber-e2e/memory");
 const PageMap = require("../po/PageMap");
 const packageJson = require("../package");
 const ComputedMap = require("../memory/ComputedMap");
@@ -89,7 +89,7 @@ exports.config = {
         reporter.generate({
             jsonDir: './reports/glued_report',
             reportPath: './reports',
-            metadata:{
+            metadata: {
                 browser: {
                     name: 'chrome',
                     version: '80'
@@ -103,13 +103,18 @@ exports.config = {
             customData: {
                 title: 'Packages',
                 data: [
-                    {label: '@cucumber-e2e/gherkin-parallel', value: packageJson.dependencies["@cucumber-e2e/gherkin-parallel"]},
+                    {
+                        label: '@cucumber-e2e/gherkin-parallel',
+                        value: packageJson.dependencies["@cucumber-e2e/gherkin-parallel"]
+                    },
                     {label: '@cucumber-e2e/memory', value: packageJson.dependencies["@cucumber-e2e/memory"]},
                     {label: '@cucumber-e2e/po', value: packageJson.dependencies["@cucumber-e2e/po"]},
-                    {label: 'vue-cucumber-html-reporter', value: packageJson.dependencies["vue-cucumber-html-reporter"]},
+                    {
+                        label: 'vue-cucumber-html-reporter',
+                        value: packageJson.dependencies["vue-cucumber-html-reporter"]
+                    },
                 ]
             }
         });
     }
-
 };
