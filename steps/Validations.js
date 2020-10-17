@@ -1,9 +1,11 @@
-const {Given, When, Then, setDefaultTimeout} = require("cucumber");
+const {Given, When, Then} = require("cucumber");
 const State = require("@cucumber-e2e/po").State;
-const expect = require("chai").expect;
+const { expect } = require("chai");
 const ConfigConstants = require("./helpers/ConfigConstants");
-
-setDefaultTimeout(ConfigConstants.GLOBAL_TIMEOUT);
+const { Memory } = require("@cucumber-e2e/memory");
+const { browser } = require("protractor");
+const { ecHelper } = require("./helpers/ecHelper");
+const { ECOptions } = require("./helpers/ecHelper");
 
 When(/^User should be on "(.+)" page$/, async function(pageName) {
     State.setPage(pageName);
@@ -18,3 +20,15 @@ When(/^User should be on "(.+)" page$/, async function(pageName) {
 
     expect(await browser.getCurrentUrl()).to.match(pageRegexp);
 });
+
+Then(/^Text of "(.+)" element should be equal to "(.+)"$/, async (alias, expected) => {
+    const expectedText = Memory.getValue(expected);
+    const page = State.getPage();
+    const element = page.getElement(alias);
+    await browser.wait(
+        ecHelper(element, ECOptions.VISIBLE),
+        ConfigConstants.VISIBILITY_TIMEOUT
+    );
+    const actualText = await element.getText();
+    expect(actualText).to.equal(expectedText);
+})

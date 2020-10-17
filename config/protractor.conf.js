@@ -1,13 +1,19 @@
-const fsextra = require("fs-extra");
+const fs = require("fs-extra");
 const yargs = require("yargs");
 const compile = require("@cucumber-e2e/gherkin-parallel");
 const reporter = require("vue-cucumber-html-reporter");
-const State = require("@cucumber-e2e/po").State;
+const { State } = require("@cucumber-e2e/po");
+const { Memory } = require("@cucumber-e2e/memory");
 const PageMap = require("../po/PageMap");
-const package = require("../package");
+const packageJson = require("../package");
+const ComputedMap = require("../memory/ComputedMap");
+const ConstantMap = require("../memory/ConstantMap");
 const argv = yargs
     .option("tags", {
         describe: "tags to run"
+    })
+    .option("device", {
+        describe: "device to emulate"
     })
     .argv;
 
@@ -23,13 +29,13 @@ exports.config = {
         browserName: "chrome",
         shardTestFiles: true,
         maxInstances: 6,
-        //chrome options
         chromeOptions: {
             args: [
                 "--disable-gpu",
                 "--disable-infobars",
                 "--no-sandbox",
-                "--incognito"
+                "--incognito",
+                "--headless"
             ],
             prefs: {
                 download: {
@@ -50,7 +56,8 @@ exports.config = {
     // cucumber command line options
     cucumberOpts: {
         require: [
-            "../steps/*.js"
+            "../steps/*.js",
+            "../steps/hooks/*.js"
         ],  // require step definition files before executing features
         // tags: [argv.tags],                      // <string[]> (expression) only execute the features or scenarios with tags matching the expression
         format: ["progress", "json:reports/report." + new Date().getTime() + ".json"],            // <string[]> (type[:path]) specify the output format, optionally supply PATH to redirect formatter output (repeatable)
@@ -58,8 +65,8 @@ exports.config = {
     },
 
     beforeLaunch: async () => {
-        fsextra.emptyDirSync("./reports");
-        fsextra.emptyDirSync("./out/features");
+        fs.emptyDirSync("./reports");
+        fs.emptyDirSync("./out/features");
 
         await compile({
             specs: ["./features/**/*.feature"],
@@ -71,8 +78,8 @@ exports.config = {
     onPrepare: () => {
         browser.waitForAngularEnabled(false);
         State.setPageMap(new PageMap());
-        // Memory.setConstantsInstance(new ConstantMap());
-        // Memory.setComputedInstance(new ComputedMap());
+        Memory.setConstantsInstance(new ConstantMap());
+        Memory.setComputedInstance(new ComputedMap());
     },
 
     afterLaunch: async () => {
@@ -93,10 +100,10 @@ exports.config = {
             customData: {
                 title: 'Packages',
                 data: [
-                    {label: '@cucumber-e2e/gherkin-parallel', value: package.dependencies["@cucumber-e2e/gherkin-parallel"]},
-                    {label: '@cucumber-e2e/memory', value: package.dependencies["@cucumber-e2e/memory"]},
-                    {label: '@cucumber-e2e/po', value: package.dependencies["@cucumber-e2e/po"]},
-                    {label: 'vue-cucumber-html-reporter', value: package.dependencies["vue-cucumber-html-reporter"]},
+                    {label: '@cucumber-e2e/gherkin-parallel', value: packageJson.dependencies["@cucumber-e2e/gherkin-parallel"]},
+                    {label: '@cucumber-e2e/memory', value: packageJson.dependencies["@cucumber-e2e/memory"]},
+                    {label: '@cucumber-e2e/po', value: packageJson.dependencies["@cucumber-e2e/po"]},
+                    {label: 'vue-cucumber-html-reporter', value: packageJson.dependencies["vue-cucumber-html-reporter"]},
                 ]
             }
         });
