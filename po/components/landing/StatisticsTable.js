@@ -26,7 +26,8 @@ class Rows extends BaseComponent {
         this.defineElement({alias: "Confirmed", selector: ".cell:nth-child(2)"});
         this.defineElement({alias: "Active", selector: ".cell:nth-child(3)"});
         this.defineElement({alias: "Recovered", selector: ".cell:nth-child(4)"});
-        this.defineElement({alias: "Tested", selector: ".cell:nth-child(5)"});
+        this.defineElement({alias: "Deceased", selector: ".cell:nth-child(5)"});
+        this.defineElement({alias: "Tested", selector: ".cell:nth-child(6)"});
     }
 }
 
