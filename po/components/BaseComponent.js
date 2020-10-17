@@ -1,4 +1,4 @@
-const { Component } = require("@cucumber-e2e/po");
+const {Component} = require("@cucumber-e2e/po");
 
 class BaseComponent extends Component {
 

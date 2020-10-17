@@ -1,8 +1,8 @@
-const { config } = require("./protractor.conf");
+const {config} = require("./protractor.conf");
 const yargs = require("yargs");
 const argv = yargs.argv;
 
-exports.config= {
+exports.config = {
     ...config,
     capabilities: {
         browserName: "chrome",

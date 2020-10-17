@@ -1,4 +1,4 @@
-const { ConstantMap } = require("@cucumber-e2e/memory");
+const {ConstantMap} = require("@cucumber-e2e/memory");
 
 class CovidIndiaConstantMap extends ConstantMap {
     constructor() {

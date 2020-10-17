@@ -1,5 +1,5 @@
-const { ComputedMap } = require("@cucumber-e2e/memory");
-const { Memory } = require("@cucumber-e2e/memory");
+const {ComputedMap} = require("@cucumber-e2e/memory");
+const {Memory} = require("@cucumber-e2e/memory");
 
 class CovidIndiaComputedMap extends ComputedMap {
     constructor() {
