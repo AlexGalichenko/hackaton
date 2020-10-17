@@ -2,9 +2,13 @@ const fs = require("fs-extra");
 const yargs = require("yargs");
 const compile = require("@cucumber-e2e/gherkin-parallel");
 const reporter = require("vue-cucumber-html-reporter");
-const State = require("@cucumber-e2e/po").State;
+const { State } = require("@cucumber-e2e/po");
+const { Memory } = require("@cucumber-e2e/memory");
 const PageMap = require("../po/PageMap");
-const package = require("../package");
+const packageJson = require("../package");
+const ComputedMap = require("../memory/ComputedMap");
+const ConstantMap = require("../memory/ConstantMap");
+const { browser } = require("protractor");
 const argv = yargs
     .option("tags", {
         describe: "tags to run"
@@ -26,7 +30,6 @@ exports.config = {
         browserName: "chrome",
         shardTestFiles: true,
         maxInstances: 6,
-        //chrome options
         chromeOptions: {
             args: [
                 "--disable-gpu",
@@ -74,8 +77,8 @@ exports.config = {
     onPrepare: () => {
         browser.waitForAngularEnabled(false);
         State.setPageMap(new PageMap());
-        // Memory.setConstantsInstance(new ConstantMap());
-        // Memory.setComputedInstance(new ComputedMap());
+        Memory.setConstantsInstance(new ConstantMap());
+        Memory.setComputedInstance(new ComputedMap());
     },
 
     afterLaunch: async () => {
@@ -96,10 +99,10 @@ exports.config = {
             customData: {
                 title: 'Packages',
                 data: [
-                    {label: '@cucumber-e2e/gherkin-parallel', value: package.dependencies["@cucumber-e2e/gherkin-parallel"]},
-                    {label: '@cucumber-e2e/memory', value: package.dependencies["@cucumber-e2e/memory"]},
-                    {label: '@cucumber-e2e/po', value: package.dependencies["@cucumber-e2e/po"]},
-                    {label: 'vue-cucumber-html-reporter', value: package.dependencies["vue-cucumber-html-reporter"]},
+                    {label: '@cucumber-e2e/gherkin-parallel', value: packageJson.dependencies["@cucumber-e2e/gherkin-parallel"]},
+                    {label: '@cucumber-e2e/memory', value: packageJson.dependencies["@cucumber-e2e/memory"]},
+                    {label: '@cucumber-e2e/po', value: packageJson.dependencies["@cucumber-e2e/po"]},
+                    {label: 'vue-cucumber-html-reporter', value: packageJson.dependencies["vue-cucumber-html-reporter"]},
                 ]
             }
         });
