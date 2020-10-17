@@ -21,6 +21,7 @@
     "@cucumber-e2e/gherkin-parallel": "^0.3.2",
     "@cucumber-e2e/memory": "^0.3.0",
     "@cucumber-e2e/po": "^0.9.2",
+    "axios": "^0.20.0",
     "chai": "^4.2.0",
     "cucumber": "^5.1.0",
     "fs-extra": "^8.1.0",
