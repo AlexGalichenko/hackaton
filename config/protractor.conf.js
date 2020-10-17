@@ -34,7 +34,8 @@ exports.config = {
                 "--disable-gpu",
                 "--disable-infobars",
                 "--no-sandbox",
-                "--incognito"
+                "--incognito",
+                "--headless"
             ],
             prefs: {
                 download: {
