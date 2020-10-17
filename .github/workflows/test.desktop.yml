@@ -12,7 +12,7 @@ jobs:
       - run: npm run wd:update
       - run: npm run test:desktop
       - name: report
-      uses: actions/upload-artifact@v2
-      with:
-        name: report
-        path: reports/index.html
+      - uses: actions/upload-artifact@v2
+        with:
+          name: report
+          path: reports/index.html
