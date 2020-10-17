@@ -8,6 +8,7 @@ const PageMap = require("../po/PageMap");
 const packageJson = require("../package");
 const ComputedMap = require("../memory/ComputedMap");
 const ConstantMap = require("../memory/ConstantMap");
+const glueReports = require("./glueReports");
 const argv = yargs
     .option("tags", {
         describe: "tags to run"
@@ -83,10 +84,12 @@ exports.config = {
     },
 
     afterLaunch: async () => {
+        fs.ensureDir("./reports/glued_report");
+        fs.writeFileSync("./reports/glued_report/report.json", JSON.stringify(glueReports("./reports")), "utf-8");
         reporter.generate({
-            jsonDir: './reports/',
-            reportPath: './reports/',
-            metadata: {
+            jsonDir: './reports/glued_report',
+            reportPath: './reports',
+            metadata:{
                 browser: {
                     name: 'chrome',
                     version: '80'
