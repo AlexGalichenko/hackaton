@@ -31,7 +31,7 @@ async function getCovidIndiaData() {
  */
 function getStateData(covidData) {
   const stateData = covidData.statewise;
-  if (!stateData) throw new Error("No statewise data found!");
+  if (!stateData) throw new Error("No state wise data found!");
   return stateData;
 };
 
@@ -50,6 +50,7 @@ function getNtopStatessByField(stateData , numberOfTopResults, fieldName) {
 };
 
 module.exports = {
+  getData,
   getCovidIndiaData,
   getStateData,
   getNtopStatessByField

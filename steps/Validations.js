@@ -1,9 +1,7 @@
-const {Given, When, Then, setDefaultTimeout} = require("cucumber");
+const {Given, When, Then} = require("cucumber");
 const State = require("@cucumber-e2e/po").State;
 const expect = require("chai").expect;
 const ConfigConstants = require("./helpers/ConfigConstants");
-
-setDefaultTimeout(ConfigConstants.GLOBAL_TIMEOUT);
 
 When(/^User should be on "(.+)" page$/, async function(pageName) {
     State.setPage(pageName);
