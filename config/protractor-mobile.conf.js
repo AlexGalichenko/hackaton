@@ -17,7 +17,8 @@ exports.config= {
                 "--disable-infobars",
                 "--no-sandbox",
                 "--incognito",
-                "--mobile-emulation"
+                "--mobile-emulation",
+                "--headless"
             ],
             prefs: {
                 download: {
