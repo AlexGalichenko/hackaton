@@ -1,4 +1,5 @@
 const BasePage = require("./BasePage");
+const StatisticsTable = require("../components/landing/StatisticsTable");
 
 class LandingPage extends BasePage {
 
@@ -6,6 +7,7 @@ class LandingPage extends BasePage {
         super();
 
         this.defineElement({alias: "State Dropdown", selector: ".StateDropdown"});
+        this.defineComponent({alias: "Statistics Table", component: new StatisticsTable()})
     }
 }
 
