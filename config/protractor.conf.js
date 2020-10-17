@@ -55,7 +55,8 @@ exports.config = {
     // cucumber command line options
     cucumberOpts: {
         require: [
-            "../steps/*.js"
+            "../steps/*.js",
+            "../steps/hooks/*.js"
         ],  // require step definition files before executing features
         // tags: [argv.tags],                      // <string[]> (expression) only execute the features or scenarios with tags matching the expression
         format: ["progress", "json:reports/report." + new Date().getTime() + ".json"],            // <string[]> (type[:path]) specify the output format, optionally supply PATH to redirect formatter output (repeatable)
