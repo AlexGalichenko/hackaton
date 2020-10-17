@@ -5,5 +5,5 @@ const ConfigConstants = require("./helpers/ConfigConstants");
 const { browser } = require("protractor");
 
 When(/^User waits "(\d+)" second$/, async function(sec) {
-    await browser.sleep(sec);
+    await browser.sleep(sec * 1000);
 });

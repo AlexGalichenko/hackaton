@@ -7,7 +7,8 @@ class LandingPage extends BasePage {
         super();
 
         this.defineElement({alias: "State Dropdown", selector: ".StateDropdown"});
-        this.defineComponent({alias: "Statistics Table", component: new StatisticsTable()})
+        this.defineComponent({alias: "Statistics Table", component: new StatisticsTable()});
+        this.defineElement({alias: "See More Details", selector: ".state-page"});
     }
 }
 

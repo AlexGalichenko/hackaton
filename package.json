@@ -5,8 +5,8 @@
   "main": " ",
   "scripts": {
     "wd:update": "webdriver-manager-replacement update --versions.chrome=85.0.4183.87 --gecko=false",
-    "test:desktop": "protractor config/protractor.conf.js",
-    "test:mobile": "protractor config/protractor-mobile.conf.js --device \"iPhone 6/7/8\""
+    "test:desktop": "protractor config/protractor.conf.js --disableChecks",
+    "test:mobile": "protractor config/protractor-mobile.conf.js --device \"iPhone 6/7/8\" --disableChecks"
   },
   "repository": {
     "type": "git",
