@@ -1,4 +1,4 @@
-const fsextra = require("fs-extra");
+const fs = require("fs-extra");
 const yargs = require("yargs");
 const compile = require("@cucumber-e2e/gherkin-parallel");
 const reporter = require("vue-cucumber-html-reporter");
@@ -8,6 +8,9 @@ const package = require("../package");
 const argv = yargs
     .option("tags", {
         describe: "tags to run"
+    })
+    .option("device", {
+        describe: "device to emulate"
     })
     .argv;
 
@@ -58,8 +61,8 @@ exports.config = {
     },
 
     beforeLaunch: async () => {
-        fsextra.emptyDirSync("./reports");
-        fsextra.emptyDirSync("./out/features");
+        fs.emptyDirSync("./reports");
+        fs.emptyDirSync("./out/features");
 
         await compile({
             specs: ["./features/**/*.feature"],
