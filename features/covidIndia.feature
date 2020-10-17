@@ -12,3 +12,6 @@ Feature: Covid India
         |3|
         |4|
 
+
+    Scenario: Verify the districts totals
+        Given Get data from "!STATE_DISTRICTS_WISE_ENDPOINT" and saves it as "STATE_DISTRICTS_WISE_DATA"
