@@ -8,7 +8,6 @@ exports.config= {
         browserName: "chrome",
         shardTestFiles: true,
         maxInstances: 6,
-        //chrome options
         chromeOptions: {
             mobileEmulation: {
                 deviceName: argv.device
