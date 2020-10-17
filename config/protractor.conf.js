@@ -89,7 +89,7 @@ exports.config = {
         reporter.generate({
             jsonDir: './reports/glued_report',
             reportPath: './reports',
-            metadata:{
+            metadata: {
                 browser: {
                     name: 'chrome',
                     version: '80'
