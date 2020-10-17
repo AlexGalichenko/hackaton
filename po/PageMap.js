@@ -6,7 +6,7 @@ class PageMap extends AbstractPageMap {
     constructor() {
         super();
 
-        this.definePage("Landing", "^.+google\.com", new LandingPage());
+        this.definePage("Landing", "covid19india.org/", new LandingPage());
     }
 
 }

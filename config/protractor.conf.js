@@ -8,7 +8,6 @@ const PageMap = require("../po/PageMap");
 const packageJson = require("../package");
 const ComputedMap = require("../memory/ComputedMap");
 const ConstantMap = require("../memory/ConstantMap");
-const { browser } = require("protractor");
 const argv = yargs
     .option("tags", {
         describe: "tags to run"
